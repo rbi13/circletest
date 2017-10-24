@@ -40,6 +40,6 @@ workflows:
           filters:
             branches:
               only:
-                - master # TODO remove
+                - master # TODO 
                 - production
                 - staging
