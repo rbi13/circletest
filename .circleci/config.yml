@@ -11,7 +11,8 @@ jobs:
           command: |
             echo Running test
   deploy:
-    machine: true
+    machine:
+      enabled: true
       image: circleci/classic:201709-01
       steps:
         - run:
