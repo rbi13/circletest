@@ -1,11 +1,30 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: ubuntu:14.04
-        command: ls
-  build2:
-    docker:
-      - image: ubuntu:14.04
-        command: ls
-        working_directory: $CIRCLE_WORKING_DIRECTORY
+    steps:
+      - checkout
+    machine: true
+      image: circleci/classic:201709-01
+      branches:
+        only:
+          - master
+          - production
+          - staging
+          - /rc-.*/
+      steps:
+        - run:
+          command: |
+            echo Running test
+  deploy:
+    machine: true
+      image: circleci/classic:201709-01
+      branches:
+        only:
+          - production
+          - staging
+          - master # TODO: remove
+      steps:
+        - run:
+          command: |
+            echo Running test
+            docker-compose -f terraform.yml run trf terraform -v
