@@ -1,29 +1,29 @@
 version: 2
 jobs:
-  build:
-    machine: true
-      image: circleci/classic:201709-01
-      branches:
-        only:
-          - master
-          - production
-          - staging
-          - /rc-.*/
-      steps:
-        - checkout
-        - run:
-          command: |
-            echo Running test
-  deploy:
-    machine: true
-      image: circleci/classic:201709-01
-      branches:
-        only:
-          - production
-          - staging
-          - master # TODO: remove
-      steps:
-        - run:
-          command: |
-            echo Running test
-            docker-compose -f terraform.yml run trf terraform -v
+  - build:
+      machine: true
+        image: circleci/classic:201709-01
+        branches:
+          only:
+            - master
+            - production
+            - staging
+            - /rc-.*/
+        steps:
+          - checkout
+          - run:
+            command: |
+              echo Running test
+  - deploy:
+      machine: true
+        image: circleci/classic:201709-01
+        branches:
+          only:
+            - production
+            - staging
+            - master # TODO: remove
+        steps:
+          - run:
+            command: |
+              echo Running test
+              docker-compose -f terraform.yml run trf terraform -v
