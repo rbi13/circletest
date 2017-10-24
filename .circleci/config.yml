@@ -1,8 +1,6 @@
 version: 2
 jobs:
   build:
-    steps:
-      - checkout
     machine: true
       image: circleci/classic:201709-01
       branches:
@@ -12,6 +10,7 @@ jobs:
           - staging
           - /rc-.*/
       steps:
+        - checkout
         - run:
           command: |
             echo Running test
