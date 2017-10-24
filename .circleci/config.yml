@@ -14,7 +14,7 @@ jobs:
       steps:
         - run:
           command: |
-            echo Running test
+            echo deploying via terraform
             docker-compose -f terraform.yml run trf terraform -v
 workflows:
   version: 2
