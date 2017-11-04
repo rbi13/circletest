@@ -1,5 +1,4 @@
 version: 2.0
-
 jobs:
   build:
     machine:
@@ -7,18 +6,13 @@ jobs:
       image: circleci/classic:201709-01
       steps:
         - checkout
-        - run:
-          command: |
-            echo Running test
+        - run: echo Running test
   deploy:
     machine:
       enabled: true
       image: circleci/classic:201709-01
       steps:
-        - run:
-          command: |
-            echo deploying via terraform
-            docker-compose -f terraform.yml run trf terraform -v
+        - run: echo deploying via terraform && docker-compose -f terraform.yml run trf terraform -v
 workflows:
   version: 2
   build_test:
@@ -27,9 +21,6 @@ workflows:
     # filters:
     #   branches:
     #     only:
-    #       - master
-    #       - production
-    #       - staging
     #       - /rc-.*/
   build_test_deploy:
     jobs:
