@@ -18,20 +18,20 @@ workflows:
   build_test:
     jobs:
       - build
-    # filters:
-    #   branches:
-    #     only:
-    #       - /rc-.*/
+    filters:
+      branches:
+        only:
+          - /rc-.*/
   build_test_deploy:
     jobs:
       - build
       - deploy:
           requires:
             - build
-          # filters:
-          #   branches:
-          #     only:
-          #       - master
-          #       - production
-          #       - staging
-          #       - qa
+          filters:
+            branches:
+              only:
+                - master
+                - production
+                - staging
+                - qa
