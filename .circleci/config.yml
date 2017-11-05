@@ -8,8 +8,7 @@ jobs:
     steps:
       - checkout
       - run:
-        command: |
-          echo Running test
+        command: echo running test
   deploy:
     machine:
       enabled: true
