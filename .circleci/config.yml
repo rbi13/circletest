@@ -13,10 +13,7 @@ jobs:
       enabled: true
       image: circleci/classic:201709-01
     steps:
-      - run:
-        command: |
-          echo deploying via terraform
-          docker-compose -f terraform.yml run trf terraform -v
+      - run: echo deploying via terraform && docker-compose -f terraform.yml run trf terraform -v
 workflows:
   version: 2
   build_test_deploy:
