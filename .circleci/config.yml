@@ -7,7 +7,7 @@ jobs:
       image: circleci/classic:201709-01
     steps:
       - checkout
-      - run: echo running test && docker-compose -v
+      - run: echo running test && docker-compose -v && docker -v
   deploy:
     machine:
       enabled: true
