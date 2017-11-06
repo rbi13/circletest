@@ -3,7 +3,7 @@ services:
   trf:
     image: hashicorp/terraform:light
     working_dir: /app
-    entrypoint: /bin/sh
+    entrypoint: /bin/sh -c
     volumes:
       - .:/app
     environment:
