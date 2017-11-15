@@ -9,7 +9,7 @@ jobs:
       - TF_VERSION: 0.10.8
       - BUILT_IMAGE: collage_web
       - IMAGE_VERSION: "${CIRCLE_BUILD_NUM}"
-      - TF_VAR_image_version: "${IMAGE_VERSION}"
+      - TF_VAR_image_version: "$IMAGE_VERSION"
     steps:
       - run: env
 workflows:
