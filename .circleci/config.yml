@@ -5,34 +5,15 @@ jobs:
     machine:
       enabled: true
       image: circleci/classic:201709-01
+    environment:
+      - TF_VERSION: 0.10.8
+      - BUILT_IMAGE: collage_web
+      - IMAGE_VERSION: "${CIRCLE_BUILD_NUM}"
+      - TF_VAR_image_version: "${IMAGE_VERSION}"
     steps:
-      - checkout
-      - run: echo running test && docker-compose -v && docker -v
-  deploy:
-    machine:
-      enabled: true
-      image: circleci/classic:201709-01
-    steps:
-      - checkout
-      - run: ls -la && echo deploying via terraform && docker-compose -f terraform.yml run trf terraform -v
+      - run: env
 workflows:
   version: 2
   build_test_deploy:
     jobs:
       - build:
-          filters:
-            branches:
-              only:
-                - /rc-.*/
-                - master
-                - production
-                - staging
-      - deploy:
-          requires:
-            - build
-          filters:
-            branches:
-              only:
-                - master # temporary
-                - production
-                - staging
